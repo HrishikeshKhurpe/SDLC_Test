@@ -1,4 +1,3 @@
-""
 # Hrishikesh's Calculator
 
 ## Overview
@@ -6,58 +5,64 @@ Hrishikesh's Calculator is a Python-based calculator application that supports b
 
 ## File Structure
 ```
-src/
-└── features/
-    └── calculator/
-        ├── calculator.py
-        └── tests/
-            └── test_calculator.py
+calculator/
+├── calculator.py
+└── tests/
+    └── test_calculator.py
 ```
 
 ## Test Case Structure
-The tests for the calculator functionality are located in the `src/features/calculator/tests/test_calculator.py` file. The `TestHrishikeshCalculator` class contains unit tests for the `add`, `subtract`, `multiply`, and `divide` methods of the `Hrishikesh_Calculator` class.
+The tests for the `Hrishikesh_Calculator` class are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
+
+- `test_add`
+- `test_subtract`
+- `test_multiply`
+- `test_divide`
 
 To run the tests, use the following command:
 
 ```
-python -m unittest discover -s src/features/calculator/tests -p "test_*.py"
+python -m unittest discover -s calculator/tests -p 'test_*.py'
 ```
 
 ## Run Book
-To use the Hrishikesh's Calculator, follow these steps:
+To use the `Hrishikesh_Calculator`, follow these steps:
 
-1. Ensure you have Python installed on your system.
-2. Clone the repository and navigate to the project directory.
-3. Create a virtual environment and activate it:
-   ```
-   python -m venv venv
-   source venv/bin/activate
-   ```
-4. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-5. Run the calculator example:
+1. Import the `Hrishikesh_Calculator` class from the `calculator.calculator` module:
+
    ```python
-   from src.features.calculator.calculator import Hrishikesh_Calculator
+   from calculator.calculator import Hrishikesh_Calculator
+   ```
 
+2. Create an instance of the `Hrishikesh_Calculator` class:
+
+   ```python
    calculator = Hrishikesh_Calculator()
-   print(calculator.add(5, 3))  # Output: 8.0
-   print(calculator.subtract(10, 4))  # Output: 6.0
-   print(calculator.multiply(2, 6))  # Output: 12.0
-   print(calculator.divide(15, 3))  # Output: 5.0
+   ```
+
+3. Use the provided methods to perform arithmetic operations:
+
+   ```python
+   result = calculator.add(2, 3)  # result = 5
+   result = calculator.subtract(5, 3)  # result = 2
+   result = calculator.multiply(2, 3)  # result = 6
+   result = calculator.divide(6, 3)  # result = 2.0
    ```
 
 ## Dependencies
-The Hrishikesh's Calculator application has no external dependencies. It uses only the Python standard library.
+This project requires the following dependencies:
+
+- Python 3.7 or higher
+
+No additional libraries are required.
 
 ## Setup Instructions
-1. Clone the repository.
-2. Create a virtual environment and activate it.
-3. Install the required dependencies using `pip install -r requirements.txt`.
+1. Ensure you have Python 3.7 or higher installed on your system.
+2. Clone the repository to your local machine.
+3. Navigate to the project directory in your terminal.
+4. You can now use the `Hrishikesh_Calculator` class in your Python scripts.
 
 ## Architecture
-The Hrishikesh's Calculator application is designed with a single class, `Hrishikesh_Calculator`, that encapsulates the basic arithmetic operations. The class uses logging to provide information about the operations being performed.
+The `Hrishikesh_Calculator` class is the main component of this application. It provides methods for performing basic arithmetic operations. The class is designed to be easy to use and extensible, allowing for the addition of more advanced functionality in the future.
 
-The application follows the SOLID principles of object-oriented design, with each method in the `Hrishikesh_Calculator` class having a single responsibility. The code is organized into appropriate folders and files to maintain modularity and maintainability.
-""
+The test suite ensures the correctness of the arithmetic operations and provides a way to verify the behavior of the calculator.
