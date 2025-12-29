@@ -1,3 +1,5 @@
+import logging
+
 class Hrishikesh_Calculator:
     """Performs basic arithmetic operations."""
 
