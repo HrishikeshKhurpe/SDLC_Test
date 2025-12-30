@@ -1,23 +1,26 @@
-# Hrishikesh's Calculator
+# Hrishikesh's Calculator with UI
 
 ## Overview
-Hrishikesh's Calculator is a Python-based calculator application that supports basic arithmetic operations such as addition, subtraction, multiplication, and division.
+This project provides a visually appealing UI for the existing Hrishikesh's Calculator application. The UI allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen.
 
 ## File Structure
 ```
 calculator/
+├── ui.py
+├── ui_controller.py
 ├── calculator.py
 └── tests/
-    └── test_calculator.py
+    └── test_ui.py
 ```
 
 ## Test Case Structure
-The tests for the `Hrishikesh_Calculator` class are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
+The tests for the calculator UI functionality are located in the `calculator/tests/test_ui.py` file. The test suite covers the following operations:
 
 - `test_add`
 - `test_subtract`
 - `test_multiply`
 - `test_divide`
+- `test_error_handling`
 
 To run the tests, use the following command:
 
@@ -26,43 +29,31 @@ python -m unittest discover -s calculator/tests -p 'test_*.py'
 ```
 
 ## Run Book
-To use the `Hrishikesh_Calculator`, follow these steps:
+To use the Hrishikesh's Calculator UI, follow these steps:
 
-1. Import the `Hrishikesh_Calculator` class from the `calculator.calculator` module:
+1. Run the `ui.py` file:
 
-   ```python
-   from calculator.calculator import Hrishikesh_Calculator
+   ```
+   python calculator/ui.py
    ```
 
-2. Create an instance of the `Hrishikesh_Calculator` class:
-
-   ```python
-   calculator = Hrishikesh_Calculator()
-   ```
-
-3. Use the provided methods to perform arithmetic operations:
-
-   ```python
-   result = calculator.add(2, 3)  # result = 5
-   result = calculator.subtract(5, 3)  # result = 2
-   result = calculator.multiply(2, 3)  # result = 6
-   result = calculator.divide(6, 3)  # result = 2.0
-   ```
+2. The calculator UI will be displayed, and you can perform various arithmetic operations by clicking the buttons on the screen.
 
 ## Dependencies
 This project requires the following dependencies:
 
 - Python 3.7 or higher
-
-No additional libraries are required.
+- tkinter (comes pre-installed with Python)
 
 ## Setup Instructions
 1. Ensure you have Python 3.7 or higher installed on your system.
 2. Clone the repository to your local machine.
 3. Navigate to the project directory in your terminal.
-4. You can now use the `Hrishikesh_Calculator` class in your Python scripts.
+4. You can now run the `ui.py` file to start the calculator UI.
 
 ## Architecture
-The `Hrishikesh_Calculator` class is the main component of this application. It provides methods for performing basic arithmetic operations. The class is designed to be easy to use and extensible, allowing for the addition of more advanced functionality in the future.
+The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
 
-The test suite ensures the correctness of the arithmetic operations and provides a way to verify the behavior of the calculator.
+The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
+
+The test suite in `test_ui.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator UI.
