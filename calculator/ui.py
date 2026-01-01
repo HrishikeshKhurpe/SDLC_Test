@@ -1,12 +1,13 @@
 import tkinter as tk
 from calculator.calculator import Hrishikesh_Calculator
+from calculator.ui_controller import CalculatorUIController
 
 class CalculatorUI:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Hrishikesh's Calculator")
         
-        self.calculator = Hrishikesh_Calculator()
+        self.calculator_controller = CalculatorUIController()
         
         self.create_widgets()
         self.root.mainloop()
@@ -43,7 +44,7 @@ class CalculatorUI:
         """Evaluate the expression in the display and update the result."""
         try:
             expression = self.display.get()
-            result = str(eval(expression))
+            result = str(self.calculator_controller.evaluate(expression))
             self.display.delete(0, tk.END)
             self.display.insert(0, result)
         except Exception as e:

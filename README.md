@@ -1,20 +1,20 @@
-# Hrishikesh's Calculator with UI
+# Hrishikesh's Calculator with Optimized UI
 
 ## Overview
-This project provides a visually appealing UI for the existing Hrishikesh's Calculator application. The UI allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen.
+This project provides an optimized and visually appealing UI for the existing Hrishikesh's Calculator application. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen. The codebase has been reviewed and optimized for performance, maintainability, and error handling.
 
 ## File Structure
 ```
 calculator/
-├── ui.py
-├── ui_controller.py
 ├── calculator.py
-└── tests/
-    └── test_ui.py
+├── tests/
+│   └── test_calculator.py
+├── ui.py
+└── ui_controller.py
 ```
 
 ## Test Case Structure
-The tests for the calculator UI functionality are located in the `calculator/tests/test_ui.py` file. The test suite covers the following operations:
+The tests for the calculator functionality are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
 
 - `test_add`
 - `test_subtract`
@@ -56,4 +56,4 @@ The calculator UI is implemented using the Tkinter library, which provides a cro
 
 The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
 
-The test suite in `test_ui.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator UI.
+The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.

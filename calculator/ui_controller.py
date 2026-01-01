@@ -1,3 +1,4 @@
+import logging
 from calculator.calculator import Hrishikesh_Calculator
 
 class CalculatorUIController:
@@ -35,3 +36,25 @@ class CalculatorUIController:
         except ValueError as e:
             logging.error(f"Error dividing {a} by {b}: {e}")
             raise
+            
+    def evaluate(self, expression):
+        """Evaluate the given expression."""
+        try:
+            parts = expression.split()
+            a = float(parts[0])
+            operator = parts[1]
+            b = float(parts[2])
+            
+            if operator == "+":
+                return self.add(a, b)
+            elif operator == "-":
+                return self.subtract(a, b)
+            elif operator == "*":
+                return self.multiply(a, b)
+            elif operator == "/":
+                return self.divide(a, b)
+            else:
+                raise ValueError(f"Invalid operator: {operator}")
+        except (ValueError, IndexError) as e:
+            logging.error(f"Error evaluating expression: {expression}, {e}")
+            raise ValueError("Invalid expression format.") from e
