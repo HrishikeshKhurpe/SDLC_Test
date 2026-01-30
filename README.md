@@ -52,8 +52,8 @@ This project requires the following dependencies:
 4. You can now run the `ui.py` file to start the calculator UI.
 
 ## Architecture
-The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
+The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `calculator/ui.py` is responsible for creating the UI elements and handling user interactions.
 
-The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
+The `CalculatorUIController` class in `calculator/ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
 
-The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
+The test suite in `calculator/tests/test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
