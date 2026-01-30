@@ -1,7 +1,7 @@
 import logging
 
 class Hrishikesh_Calculator:
-    """Performs basic arithmetic operations."""
+    """Performs basic arithmetic operations with improved error handling and logging."""
 
     def add(self, a, b):
         """Add two numbers."""
@@ -30,6 +30,9 @@ class Hrishikesh_Calculator:
     def divide(self, a, b):
         """Divide two numbers."""
         try:
+            if b == 0:
+                logging.error(f"Error dividing {a} by {b}: Division by zero")
+                raise ValueError("Cannot divide by zero.")
             return a / b
         except TypeError as e:
             logging.error(f"Error dividing {a} by {b}: {e}")
