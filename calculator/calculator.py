@@ -1,39 +1,29 @@
 import logging
 
-class Hrishikesh_Calculator:
-    """Performs basic arithmetic operations."""
+class Calculator:
+    """
+    A simple calculator class that performs basic arithmetic operations.
+    """
 
-    def add(self, a, b):
-        """Add two numbers."""
-        try:
-            return a + b
-        except TypeError as e:
-            logging.error(f"Error adding {a} and {b}: {e}")
-            raise ValueError("Invalid input types. Please provide numbers.") from e
+    def add(self, x: float, y: float) -> float:
+        """Adds two numbers."""
+        logging.info(f"Adding {x} and {y}")
+        return x + y
 
-    def subtract(self, a, b):
-        """Subtract two numbers."""
-        try:
-            return a - b
-        except TypeError as e:
-            logging.error(f"Error subtracting {b} from {a}: {e}")
-            raise ValueError("Invalid input types. Please provide numbers.") from e
+    def subtract(self, x: float, y: float) -> float:
+        """Subtracts the second number from the first."""
+        logging.info(f"Subtracting {y} from {x}")
+        return x - y
 
-    def multiply(self, a, b):
-        """Multiply two numbers."""
-        try:
-            return a * b
-        except TypeError as e:
-            logging.error(f"Error multiplying {a} and {b}: {e}")
-            raise ValueError("Invalid input types. Please provide numbers.") from e
+    def multiply(self, x: float, y: float) -> float:
+        """Multiplies two numbers."""
+        logging.info(f"Multiplying {x} by {y}")
+        return x * y
 
-    def divide(self, a, b):
-        """Divide two numbers."""
-        try:
-            return a / b
-        except TypeError as e:
-            logging.error(f"Error dividing {a} by {b}: {e}")
-            raise ValueError("Invalid input types. Please provide numbers.") from e
-        except ZeroDivisionError as e:
-            logging.error(f"Error dividing {a} by {b}: {e}")
-            raise ValueError("Cannot divide by zero.") from e
+    def divide(self, x: float, y: float) -> float:
+        """Divides the first number by the second. Raises ValueError if dividing by zero."""
+        logging.info(f"Dividing {x} by {y}")
+        if y == 0:
+            logging.error("Attempted to divide by zero")
+            raise ValueError("Cannot divide by zero")
+        return x / y
