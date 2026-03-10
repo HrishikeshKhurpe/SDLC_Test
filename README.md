@@ -1,59 +1,96 @@
-# Hrishikesh's Calculator with Optimized UI
+# Calculator API
 
-## Overview
-This project provides an optimized and visually appealing UI for the existing Hrishikesh's Calculator application. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen. The codebase has been reviewed and optimized for performance, maintainability, and error handling.
+A simple REST API for a calculator built with FastAPI.
 
-## File Structure
-```
-calculator/
-├── calculator.py
-├── tests/
-│   └── test_calculator.py
-├── ui.py
-└── ui_controller.py
-```
+## Features
 
-## Test Case Structure
-The tests for the calculator functionality are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
+- Perform basic arithmetic operations: add, subtract, multiply, divide.
+- JSON-based API.
+- Error handling for invalid operations and division by zero.
 
-- `test_add`
-- `test_subtract`
-- `test_multiply`
-- `test_divide`
-- `test_error_handling`
+## API Endpoint
 
-To run the tests, use the following command:
+### `POST /calculator`
 
-```
-python -m unittest discover -s calculator/tests -p 'test_*.py'
+Performs a calculation.
+
+**Request Body:**
+
+```json
+{
+  "number1": 10,
+  "number2": 5,
+  "operation": "divide"
+}
 ```
 
-## Run Book
-To use the Hrishikesh's Calculator UI, follow these steps:
+- `number1` (float, required): The first number.
+- `number2` (float, required): The second number.
+- `operation` (string, required): The operation to perform. Must be one of `"add"`, `"subtract"`, `"multiply"`, `"divide"`.
 
-1. Run the `ui.py` file:
+**Success Response (200 OK):**
 
-   ```
-   python calculator/ui.py
-   ```
+```json
+{
+  "result": 2.0
+}
+```
 
-2. The calculator UI will be displayed, and you can perform various arithmetic operations by clicking the buttons on the screen.
+**Error Response (400 Bad Request):**
 
-## Dependencies
-This project requires the following dependencies:
+For division by zero.
 
-- Python 3.7 or higher
-- tkinter (comes pre-installed with Python)
+```json
+{
+  "detail": "Division by zero is not allowed."
+}
+```
 
-## Setup Instructions
-1. Ensure you have Python 3.7 or higher installed on your system.
-2. Clone the repository to your local machine.
-3. Navigate to the project directory in your terminal.
-4. You can now run the `ui.py` file to start the calculator UI.
+**Error Response (422 Unprocessable Entity):**
 
-## Architecture
-The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
+For invalid request body (e.g., wrong data types, missing fields, or invalid operation).
 
-The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
+```json
+{
+    "detail": [
+        {
+            "loc": [
+                "body",
+                "operation"
+            ],
+            "msg": "unexpected value; permitted: 'add', 'subtract', 'multiply', 'divide'",
+            "type": "value_error.const"
+        }
+    ]
+}
+```
 
-The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
+## Setup and Running the Application
+
+1.  **Install dependencies:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2.  **Run the application:**
+
+    The application is located in `src/calculator/main.py`. To run it with Uvicorn:
+
+    ```bash
+    uvicorn src.calculator.main:app --reload
+    ```
+
+    The API will be available at `http://127.0.0.1:8000`.
+
+3.  **API Documentation:**
+
+    Once the server is running, interactive API documentation (Swagger UI) is available at `http://127.0.0.1:8000/docs`.
+
+## Running Tests
+
+To run the unit tests, use pytest:
+
+```bash
+pytest
+```
