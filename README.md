@@ -1,59 +1,46 @@
-# Hrishikesh's Calculator with Optimized UI
+# SDLC_Test - Calculator Application
 
 ## Overview
-This project provides an optimized and visually appealing UI for the existing Hrishikesh's Calculator application. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen. The codebase has been reviewed and optimized for performance, maintainability, and error handling.
-
-## File Structure
-```
-calculator/
-├── calculator.py
-├── tests/
-│   └── test_calculator.py
-├── ui.py
-└── ui_controller.py
-```
-
-## Test Case Structure
-The tests for the calculator functionality are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
-
-- `test_add`
-- `test_subtract`
-- `test_multiply`
-- `test_divide`
-- `test_error_handling`
-
-To run the tests, use the following command:
-
-```
-python -m unittest discover -s calculator/tests -p 'test_*.py'
-```
-
-## Run Book
-To use the Hrishikesh's Calculator UI, follow these steps:
-
-1. Run the `ui.py` file:
-
-   ```
-   python calculator/ui.py
-   ```
-
-2. The calculator UI will be displayed, and you can perform various arithmetic operations by clicking the buttons on the screen.
-
-## Dependencies
-This project requires the following dependencies:
-
-- Python 3.7 or higher
-- tkinter (comes pre-installed with Python)
-
-## Setup Instructions
-1. Ensure you have Python 3.7 or higher installed on your system.
-2. Clone the repository to your local machine.
-3. Navigate to the project directory in your terminal.
-4. You can now run the `ui.py` file to start the calculator UI.
+This repository contains a simple calculator application built with Python and Tkinter. It demonstrates basic SDLC practices including code organization, testing, and robust error handling. The application provides a user-friendly interface for performing standard arithmetic operations.
 
 ## Architecture
-The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
+The application follows a Model-View-Controller (MVC) like pattern to separate concerns:
+-   `calculator/calculator.py`: **(Model)** Encapsulates the core arithmetic logic (e.g., add, subtract, multiply, divide). This module is purely functional and independent of the UI.
+-   `calculator/ui_controller.py`: **(Controller)** Acts as an intermediary between the UI and the core calculator logic. It handles expression parsing, operator precedence, and delegates arithmetic operations to the `Calculator` class. It also manages error propagation from the core logic to the UI.
+-   `calculator/ui.py`: **(View)** Implements the Tkinter-based graphical user interface. It captures user input, displays expressions and results, and presents error messages.
 
-The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
+## Run Book
 
-The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
+### How to Run
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/HrishikeshKhurpe/SDLC_Test.git
+    cd SDLC_Test
+    ```
+2.  **Run the application:**
+    ```bash
+    python calculator/ui.py
+    ```
+
+### How to Use
+-   **Number Buttons (0-9):** Click to input digits.
+-   **Operator Buttons (+, -, *, /):** Click to perform arithmetic operations. The controller handles operator precedence (e.g., multiplication and division before addition and subtraction).
+-   **Decimal Point (.):** Use to input decimal numbers. The UI prevents multiple decimal points within a single number.
+-   **Equals (=):** Click to evaluate the current expression and display the result.
+-   **Clear (C):** Clears the entire expression and resets the display to "0".
+-   **Backspace (DEL):** Removes the last character from the current expression. If the expression becomes empty, the display resets to "0".
+-   **Display:** Shows the current expression or the result of the last calculation. Error messages will also appear here, accompanied by a pop-up.
+
+## Testing
+To run the unit tests:
+```bash
+python -m unittest discover calculator/tests
+```
+The tests cover the core arithmetic logic, expression parsing, operator precedence, and various edge cases including division by zero and invalid expression formats.
+
+## Error Handling
+The application includes robust error handling:
+-   **Division by Zero:** Attempting to divide by zero will result in a specific error message.
+-   **Invalid Expressions:** Malformed expressions (e.g., `10 +`, `abc`) are caught and reported with informative error messages.
+-   **UI Feedback:** Errors are displayed both in the calculator's main display and via Tkinter `messagebox` pop-ups for clear user notification.
+-   **Logging:** Detailed logs are generated for key operations and errors, aiding in debugging and monitoring.
