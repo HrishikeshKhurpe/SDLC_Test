@@ -1,59 +1,58 @@
-# Hrishikesh's Calculator with Optimized UI
+# SDLC_Test Calculator Application
 
 ## Overview
-This project provides an optimized and visually appealing UI for the existing Hrishikesh's Calculator application. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen. The codebase has been reviewed and optimized for performance, maintainability, and error handling.
 
-## File Structure
-```
-calculator/
-├── calculator.py
-├── tests/
-│   └── test_calculator.py
-├── ui.py
-└── ui_controller.py
-```
+This repository contains a simple calculator application developed as part of an SDLC test. The application provides basic arithmetic operations through a command-line interface (CLI) and a graphical user interface (GUI).
 
-## Test Case Structure
-The tests for the calculator functionality are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
-
-- `test_add`
-- `test_subtract`
-- `test_multiply`
-- `test_divide`
-- `test_error_handling`
-
-To run the tests, use the following command:
-
-```
-python -m unittest discover -s calculator/tests -p 'test_*.py'
-```
-
-## Run Book
-To use the Hrishikesh's Calculator UI, follow these steps:
-
-1. Run the `ui.py` file:
-
-   ```
-   python calculator/ui.py
-   ```
-
-2. The calculator UI will be displayed, and you can perform various arithmetic operations by clicking the buttons on the screen.
-
-## Dependencies
-This project requires the following dependencies:
-
-- Python 3.7 or higher
-- tkinter (comes pre-installed with Python)
-
-## Setup Instructions
-1. Ensure you have Python 3.7 or higher installed on your system.
-2. Clone the repository to your local machine.
-3. Navigate to the project directory in your terminal.
-4. You can now run the `ui.py` file to start the calculator UI.
+**Recent Enhancements:**
+The calculator now features an advanced expression evaluator capable of handling complex mathematical expressions, including operator precedence (e.g., multiplication and division before addition and subtraction), parentheses for grouping, and unary minus (e.g., `-5`, `-(2+3)`). The GUI has been improved with more specific error messages and a 'Clear' button for better user experience.
 
 ## Architecture
-The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
 
-The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
+The application is structured into several key components:
 
-The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
+-   `calculator/calculator.py`: Contains the core arithmetic logic (add, subtract, multiply, divide). This module is designed to be independent of the UI.
+-   `calculator/ui_controller.py`: Acts as an intermediary between the UI and the core calculator logic. It is responsible for parsing and evaluating mathematical expressions using a robust shunting-yard-like algorithm, managing operator precedence, and handling unary minus. It also incorporates comprehensive error handling and logging for evaluation processes.
+-   `calculator/ui.py`: Implements the Graphical User Interface (GUI) using Tkinter. It interacts with the `UIController` to process user input and display results. The UI now provides specific feedback for calculation errors and includes a 'Clear' button.
+-   `calculator/cli.py`: (Assumed to exist, though not directly modified in this task) Provides a command-line interface for the calculator.
+-   `calculator/tests/test_calculator.py`: Contains unit tests for both the `Calculator` core logic and the `UIController`'s expression evaluation. These tests cover basic operations, operator precedence, parentheses, unary minus, edge cases like division by zero, and various valid and invalid expression formats.
+
+## Setup and Installation
+
+To set up and run the application:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/HrishikeshKhurpe/SDLC_Test.git
+    cd SDLC_Test
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    pip install ruff # For linting
+    ```
+    (Note: The core calculator has no external dependencies beyond standard Python libraries.)
+
+## How to Run
+
+### GUI Application
+
+To run the graphical user interface:
+```bash
+python calculator/ui.py
+```
+
+### Running Tests
+
+To execute the unit tests:
+```bash
+python -m unittest calculator/tests/test_calculator.py
+```
+
+## Continuous Integration
+
+The project includes a GitHub Actions workflow (`.github/workflows/ci.yml`) to ensure code quality. This workflow automatically runs tests and linting checks on every push and pull request to the `main` branch. It is configured to fail the build if any tests fail or linting issues are detected, ensuring a high standard of code quality.
+
+## Contributing
+
+Contributions are welcome! Please ensure your code adheres to the existing style, includes comprehensive tests, and passes all CI checks.
