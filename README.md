@@ -1,59 +1,67 @@
-# Hrishikesh's Calculator with Optimized UI
+# Tools API
 
-## Overview
-This project provides an optimized and visually appealing UI for the existing Hrishikesh's Calculator application. The calculator supports basic arithmetic operations such as addition, subtraction, multiplication, and division, and displays the results on the screen. The codebase has been reviewed and optimized for performance, maintainability, and error handling.
+A simple REST API to demonstrate a basic application structure using FastAPI.
 
-## File Structure
-```
-calculator/
-├── calculator.py
-├── tests/
-│   └── test_calculator.py
-├── ui.py
-└── ui_controller.py
-```
-
-## Test Case Structure
-The tests for the calculator functionality are located in the `calculator/tests/test_calculator.py` file. The test suite covers the following operations:
-
-- `test_add`
-- `test_subtract`
-- `test_multiply`
-- `test_divide`
-- `test_error_handling`
-
-To run the tests, use the following command:
+## Project Structure
 
 ```
-python -m unittest discover -s calculator/tests -p 'test_*.py'
+/
+|-- src/
+|   |-- __init__.py
+|   |-- main.py               # Main FastAPI application entry point
+|   |-- services/
+|   |   |-- __init__.py
+|   |   |-- tool_service.py   # Business logic for tools
+|   |-- models/
+|   |   |-- __init__.py
+|   |   |-- tool.py           # Pydantic data model for a Tool
+|   |-- handlers/
+|       |-- __init__.py
+|       |-- tool_handler.py   # API route handlers for tools
+|-- README.md
 ```
 
-## Run Book
-To use the Hrishikesh's Calculator UI, follow these steps:
+## API Endpoints
 
-1. Run the `ui.py` file:
+### Get All Tools
 
-   ```
-   python calculator/ui.py
-   ```
+- **GET** `/api/v1/tools`
+- **Description**: Retrieves a list of all available tools.
+- **Success Response**:
+  - **Code**: 200 OK
+  - **Content**:
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Hammer",
+        "description": "A tool for pounding nails."
+      },
+      {
+        "id": 2,
+        "name": "Screwdriver",
+        "description": "A tool for turning screws."
+      },
+      {
+        "id": 3,
+        "name": "Wrench",
+        "description": "A tool for gripping and turning nuts and bolts."
+      }
+    ]
+    ```
 
-2. The calculator UI will be displayed, and you can perform various arithmetic operations by clicking the buttons on the screen.
+## How to Run
 
-## Dependencies
-This project requires the following dependencies:
+1.  **Install dependencies**:
+    ```bash
+    pip install "fastapi[all]"
+    ```
 
-- Python 3.7 or higher
-- tkinter (comes pre-installed with Python)
+2.  **Start the server**:
+    ```bash
+    uvicorn src.main:app --reload
+    ```
 
-## Setup Instructions
-1. Ensure you have Python 3.7 or higher installed on your system.
-2. Clone the repository to your local machine.
-3. Navigate to the project directory in your terminal.
-4. You can now run the `ui.py` file to start the calculator UI.
-
-## Architecture
-The calculator UI is implemented using the Tkinter library, which provides a cross-platform GUI toolkit for Python. The `CalculatorUI` class in `ui.py` is responsible for creating the UI elements and handling user interactions.
-
-The `CalculatorUIController` class in `ui_controller.py` acts as an intermediary between the UI and the `Hrishikesh_Calculator` class, which contains the core calculator logic. This separation of concerns allows for better testability and maintainability of the application.
-
-The test suite in `test_calculator.py` ensures the correct integration between the UI and the calculator logic, and verifies the overall functionality of the calculator.
+3.  **Access the API**:
+    -   Open your browser to [http://127.0.0.1:8000/api/v1/tools](http://127.0.0.1:8000/api/v1/tools)
+    -   Access the interactive API documentation at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
